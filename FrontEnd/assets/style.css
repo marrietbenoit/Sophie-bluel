@@ -136,19 +136,19 @@ body {
   background: #fffef8;
 }
 #hero{
-display: none;
-justify-content: center;
-align-items: center;
-height:5vh;
-margin-top: 0;
-color: white;
-background-color: black;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  height: 50px;
 }
 
 #hero-img {
   display: none;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
+    margin-right: 1em;
 }
 .hidden {
   display: none;
@@ -227,11 +227,32 @@ nav a {
   text-align: center;
   margin-bottom: 1em;
 }
-#myBtn {
-  display: none;
-    width: 20px;
-    height: 20px;
+#titleBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5em;
 }
+
+#titleBox h2 {
+    margin: 0;
+}
+
+#titleBox button {
+    display: none;
+    align-items: center;
+    width: 90px;
+    height: 20px;
+    margin-left: 2em;
+    border: none;
+    background: #fffef8;
+}
+
+#titleBox button img {
+    width: 15px;
+    margin-right: 5px;
+}
+
 .filtres {
   display: flex;
   justify-content: space-between;
@@ -344,9 +365,10 @@ input[type="submit"] {
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-footer nav ul {
+footer {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
-  background: #ffffff;
+  background: red;
   height: 50px;
 }

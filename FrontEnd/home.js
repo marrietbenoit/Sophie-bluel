@@ -96,15 +96,17 @@ function generateCategoryButtons(categories) {
 const token = localStorage.getItem("token");
 const logBtn = document.getElementById("logBtn");
 const hero = document.getElementById("hero");
-const myBtn = document.getElementById("myBtn");
 const heroImg = document.getElementById("hero-img");
-
+const myBtn = document.getElementById("myBtn");
+const myBtnImg = document.getElementById("pf_img");
 
 if (token) {
   logBtn.textContent = "logout";
     hero.style.display = "flex";
     myBtn.style.display = "flex";
-    heroImg.classList.remove("hidden");
+    myBtnImg.style.display = "inline";
+    heroImg.style.display = "inline";
+    document.querySelector(".filtres").style.display = "none";
 }
 
                 

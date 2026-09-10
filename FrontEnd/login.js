@@ -3,6 +3,7 @@
 
 const form = document.getElementById("loginForm");
 
+
 form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
@@ -13,6 +14,8 @@ form.addEventListener("submit", async function (event) {
         email: email,
         password: password
     };
+   
+
 
     try {
         const response = await fetch("http://localhost:5678/api/users/login", {
@@ -24,12 +27,13 @@ form.addEventListener("submit", async function (event) {
         });
 
         if (response.ok) {
+           
             const data = await response.json();
 
             localStorage.setItem("token", data.token);
 
             window.location.href = "index.html";
-
+        
         } else {
             alert("E-mail ou mot de passe incorrect");
         }

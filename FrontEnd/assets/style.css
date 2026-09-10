@@ -135,11 +135,31 @@ body {
   font-size: 14px;
   background: #fffef8;
 }
+#hero{
+display: none;
+justify-content: center;
+align-items: center;
+height:5vh;
+margin-top: 0;
+color: white;
+background-color: black;
+}
+
+#hero-img {
+  display: none;
+    width: 20px;
+    height: 20px;
+}
+.hidden {
+  display: none;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   margin: 50px 0;
 }
+
 section {
   margin: 50px 0;
 }
@@ -209,24 +229,26 @@ nav a {
 }
 #myBtn {
   display: none;
+    width: 20px;
+    height: 20px;
 }
 .filtres {
   display: flex;
   justify-content: space-between;
   margin-bottom: 4em;
-  width: 50%;
+  width: 70%;
   justify-self: center;
 }
 .filter-btns {
-  background-color: #ffffff;
-  color: #1d6154;
-  width: 585;
-  height: 38;
-  top: 812px;
-  left: 427px;
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  background-color: #1d6154;
+  margin: 1em;
+  width: 180px;
+  text-align: center;
   border-radius: 60px;
-  border-width: 1px;
-  opacity: 1;
+  border:1px ;
   cursor: pointer;
 }
 

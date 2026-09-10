@@ -91,8 +91,21 @@ function generateCategoryButtons(categories) {
 
     activeButton.classList.add("active");
 }
+// Changes needed for edit page to be displayed when user is logged in
+
+const token = localStorage.getItem("token");
+const logBtn = document.getElementById("logBtn");
+const hero = document.getElementById("hero");
+const myBtn = document.getElementById("myBtn");
+const heroImg = document.getElementById("hero-img");
 
 
+if (token) {
+  logBtn.textContent = "logout";
+    hero.style.display = "flex";
+    myBtn.style.display = "flex";
+    heroImg.classList.remove("hidden");
+}
 
                 
 

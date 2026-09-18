@@ -129,13 +129,17 @@ table {
 }
 /** end reset css**/
 body {
-  max-width: 1140px;
   margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
   background: #fffef8;
 }
-#hero{
+.hero {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+}
+#hero {
   color: #ffffff;
   display: flex;
   justify-content: center;
@@ -146,18 +150,21 @@ body {
 
 #hero-img {
   display: none;
-    width: 15px;
-    height: 15px;
-    margin-right: 1em;
+  width: 15px;
+  height: 15px;
+  margin-right: 1em;
 }
 .hidden {
   display: none;
 }
 
-header {
+#header2 {
   display: flex;
   justify-content: space-between;
-  margin: 50px 0;
+  margin: 50px;
+}
+main {
+  margin: 10em;
 }
 
 section {
@@ -228,36 +235,38 @@ nav a {
   margin-bottom: 1em;
 }
 #titleBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5em;
 }
 
 #titleBox h2 {
-    margin: 0;
+  margin: 0;
 }
 
 #titleBox button {
-    display: none;
-    align-items: center;
-    width: 90px;
-    height: 20px;
-    margin-left: 2em;
-    border: none;
-    background: #fffef8;
+  display: none;
+  align-items: center;
+  width: 90px;
+  height: 20px;
+  margin-left: 2em;
+  border: none;
+  background: red;
+  cursor: pointer;
 }
 
 #titleBox button img {
-    width: 15px;
-    margin-right: 5px;
+  width: 15px;
+  margin-right: 5px;
 }
 
 .filtres {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 4em;
-  width: 70%;
+  width: auto;
   justify-self: center;
 }
 .filter-btns {
@@ -266,10 +275,11 @@ nav a {
   color: white;
   background-color: #1d6154;
   margin: 1em;
+  min-height: 3em;
   width: 180px;
   text-align: center;
   border-radius: 60px;
-  border:1px ;
+  border: 1px;
   cursor: pointer;
 }
 
@@ -371,4 +381,229 @@ footer {
   justify-content: flex-end;
   background: red;
   height: 50px;
+}
+#portfolio {
+  position: relative;
+}
+.modal-container {
+  width: 30%;
+  max-width: 90%;
+  padding: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: none;
+}
+
+.modal-container::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  width: 100%;
+}
+
+.modal-container-title {
+  text-align: center;
+}
+
+.modal-container-title h4 {
+  font-size: 26px;
+  margin: 10px 0 30px;
+}
+
+.close-back {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.fig {
+  position: relative;
+  display: inline-block;
+}
+
+.modal-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.modal-gallery {
+  padding: 2em;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.modal-gallery figure {
+  position: relative;
+  margin: 0;
+}
+
+.modal-gallery figure > img {
+  width: 100%;
+  display: block;
+}
+
+.trash-box {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border: none;
+  border-radius: 2px;
+  background: black;
+}
+
+.trash-box img {
+  width: 100%;
+}
+
+.modal-line {
+  margin: 30px 0;
+}
+
+.modal-btn {
+  display: block;
+  margin: auto;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 20px;
+  background: #1d6154;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* Add photo modal */
+
+.add-modal-container {
+  width: 30%;
+  max-width: 90%;
+  padding: 30px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: none;
+  background-color: white;
+}
+
+.add-modal-container::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.addModal-content {
+  width: 100%;
+}
+
+.addModal-container-title {
+  text-align: center;
+}
+
+.addModal-container-title h4 {
+  font-size: 26px;
+  margin: 10px 0 30px;
+}
+
+.add-modal-container .close-back {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back,
+.add-close {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.addUploadWindow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e8f1f0;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.previewBox {
+  width: 100%;
+  height: 150px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-img {
+  max-width: 100%;
+  max-height: 150px;
+}
+
+.upload-btn {
+  position: relative;
+  margin-top: 10px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  background-color: #c9dede;
+  color: #306b64;
+  cursor: pointer;
+}
+
+.upload-btn input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.addUploadWindow p {
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
+.addModal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.addModal-content label {
+  margin-bottom: 8px;
+}
+
+.addModal-content input[type="text"],
+.addModal-content select {
+  height: 40px;
+  margin-bottom: 25px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.addModal-line {
+  width: 100%;
+  margin: 10px 0 30px;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.addWindowBtn {
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #1d6154;
+  color: white;
+  cursor: pointer;
 }

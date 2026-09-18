@@ -9,7 +9,7 @@ if (!allworks) {
 }
 
 // To fetch "works" from API and store in localStorage
-async function getWorks() {
+ async function getWorks() {
   try {
     const response = await fetch("http://localhost:5678/api/works");
     const works = await response.json();
@@ -92,7 +92,7 @@ function generateCategoryButtons(categories) {
     activeButton.classList.add("active");
 }
 // Changes needed for edit page to be displayed when user is logged in
-
+//then revert all changes when we click on logout and return to landing page
 const token = localStorage.getItem("token");
 const logBtn = document.getElementById("logBtn");
 const hero = document.getElementById("hero");
@@ -107,7 +107,23 @@ if (token) {
     myBtnImg.style.display = "inline";
     heroImg.style.display = "inline";
     document.querySelector(".filtres").style.display = "none";
+}else{
+
+    logBtn.textContent = "Login";
+    hero.style.display = "none";
+    myBtn.style.display = "none";
+    myBtnImg.style.display = "none";
+    heroImg.style.display = "none";
+    document.querySelector(".filtres").style.display = "flex";
 }
+
+function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+}
+
+logBtn.addEventListener("click", logout);
+
 
                 
 

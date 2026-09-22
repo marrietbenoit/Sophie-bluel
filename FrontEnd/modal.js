@@ -20,7 +20,6 @@ function generateModalWorks(works) {
     works.forEach((work) => {
         const figure = document.createElement("figure");
         const image = document.createElement("img"); 
-
         image.src = work.imageUrl;
         image.alt = work.title; 
 
@@ -31,13 +30,54 @@ function generateModalWorks(works) {
         trashIcon.src = "./assets/icons/trash.svg"; 
         trashIcon.alt = "Supprimer"; 
 
+// To be able to delete a project
         deleteBtn.appendChild(trashIcon); 
+        deleteBtn.addEventListener("click", function () {
+            deleteWork(work.id);
+        });
+
         figure.appendChild(image); 
         figure.appendChild(deleteBtn);
         modalGallery.appendChild(figure);
     }); 
 }
 
+async function deleteWork(workId) {
+
+    const token = localStorage.getItem("token");
+
+    try {
+        const response = await fetch(
+            `http://localhost:5678/api/works/${workId}`,
+            {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }
+        );
+
+        if (response.ok) {
+
+            // Remove the work from our list
+            // Update localStorage
+            allworks = allworks.filter((work) => work.id !== workId);
+
+            localStorage.setItem("allworks", JSON.stringify(allworks));
+            generateWorks(allworks);
+            generateModalWorks(allworks);
+
+        } else {
+
+            alert("Une erreur est survenue lors de la suppression.");
+        }
+
+    } catch (error) {
+
+        console.error("Erreur :", error);
+        alert("Une erreur est survenue.");
+    }
+}
 
 // Close modal
 closeBtn.addEventListener("click", function () {
@@ -156,18 +196,18 @@ addForm.addEventListener("submit", async function (event) {
 
         // If the photo was added correctly
         //add the new photo to our list
-        //close modal and update projects
+        //close addmodal and update projects
        if (response.ok) {
 
     const newWork = await response.json();
-    
+
     allworks.push(newWork);
     localStorage.setItem("allworks", JSON.stringify(allworks));
     generateWorks(allworks);
     addModal.close();
     modal.showModal();
     generateModalWorks(allworks);
-
+ 
     // Reset form andpreview image
     addForm.reset();
     previewImage.src = "./assets/icons/picture.png";
@@ -184,4 +224,3 @@ addForm.addEventListener("submit", async function (event) {
     }
 });
 
-//Now to

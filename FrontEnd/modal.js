@@ -156,27 +156,26 @@ addForm.addEventListener("submit", async function (event) {
 
         // If the photo was added correctly
         //add the new photo to our list
-        //close the add photo modal and open modal
-        if (response.ok) {
+        //close modal and update projects
+       if (response.ok) {
 
-            const newWork = await response.json();
+    const newWork = await response.json();
+    
+    allworks.push(newWork);
+    localStorage.setItem("allworks", JSON.stringify(allworks));
+    generateWorks(allworks);
+    addModal.close();
+    modal.showModal();
+    generateModalWorks(allworks);
 
-            allworks.push(newWork);
-              generateWorks(allworks);
-              console.log(allworks)
-            addModal.close();
-            modal.showModal();
-            generateModalWorks(allworks);
-             
+    // Reset form andpreview image
+    addForm.reset();
+    previewImage.src = "./assets/icons/picture.png";
 
-            //reset the form with preview img
-            addForm.reset();
-            previewImage.src = "./assets/icons/picture.png";
+} else {
 
-        } else {
-
-            alert("Une erreur est survenue lors de l'ajout de la photo.");
-        }
+    alert("Une erreur est survenue lors de l'ajout de la photo.");
+}
 
     } catch (error) {
 

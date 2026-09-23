@@ -74,7 +74,7 @@ function generateCategoryButtons(categories) {
              btn.classList.add("filter-btns");
               btn.innerText = category.name; 
               btn.addEventListener("click", () => { setActiveButton(btn);
-                 const filteredWorks = allworks.filter( (work) => work.category?.name === category.name );
+                 const filteredWorks = allworks.filter( (work) => work.category?.id == category.id );
 
                 generateWorks(filteredWorks); 
             });

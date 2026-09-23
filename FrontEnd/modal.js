@@ -163,6 +163,7 @@ getModalCategories();
 // To add new photo to works
 const addForm = document.querySelector("#addModal form");
 
+
 addForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
@@ -181,10 +182,9 @@ addForm.addEventListener("submit", async function (event) {
     formData.append("title", title);
     formData.append("category", category);
 
-
     try {
 
-        //Now send the new photo to the API
+        // Now send the new photo to the API
         const response = await fetch("http://localhost:5678/api/works", {
             method: "POST",
             headers: {
@@ -193,29 +193,28 @@ addForm.addEventListener("submit", async function (event) {
             body: formData
         });
 
-
         // If the photo was added correctly
-        //add the new photo to our list
-        //close addmodal and update projects
-       if (response.ok) {
+        if (response.ok) {
 
-    const newWork = await response.json();
+            const newWork = await response.json();
+            newWork.category = {
+                id: category
+            };
+            allworks.push(newWork);
 
-    allworks.push(newWork);
-    localStorage.setItem("allworks", JSON.stringify(allworks));
-    generateWorks(allworks);
-    addModal.close();
-    modal.showModal();
-    generateModalWorks(allworks);
- 
-    // Reset form andpreview image
-    addForm.reset();
-    previewImage.src = "./assets/icons/picture.png";
+            localStorage.setItem("allworks", JSON.stringify(allworks));
 
-} else {
+            generateWorks(allworks);
+            generateModalWorks(allworks);
+            addForm.reset();
+            previewImage.src = "./assets/icons/picture.png";
+            addModal.close();
+            modal.showModal();
 
-    alert("Une erreur est survenue lors de l'ajout de la photo.");
-}
+        } else {
+
+            alert("Une erreur est survenue lors de l'ajout de la photo.");
+        }
 
     } catch (error) {
 
@@ -223,4 +222,5 @@ addForm.addEventListener("submit", async function (event) {
         alert("Une erreur est survenue.");
     }
 });
+
 

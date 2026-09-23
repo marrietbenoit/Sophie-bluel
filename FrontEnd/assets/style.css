@@ -252,7 +252,7 @@ nav a {
   height: 20px;
   margin-left: 2em;
   border: none;
-  background: red;
+  background: none;
   cursor: pointer;
 }
 
@@ -379,7 +379,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: red;
+  background: white;
   height: 50px;
 }
 #portfolio {

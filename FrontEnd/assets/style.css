@@ -430,11 +430,15 @@ footer {
 .close-back {
   display: flex;
   justify-content: flex-end;
+
 }
 
 .close {
   font-size: 25px;
   cursor: pointer;
+  
+  background: none;
+  border: none;
 }
 
 .fig {
@@ -513,9 +517,7 @@ footer {
 }
 
 
-/* =========================
-   ADD PHOTO MODAL
-   ========================= */
+
 
 .add-modal-container {
   width: 630px;
@@ -556,24 +558,10 @@ footer {
 }
 
 
-/* Close and back buttons */
 
-.add-modal-container .close-back {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-}
-
-.back,
-.add-close {
-  font-size: 25px;
-  cursor: pointer;
-}
+ 
 
 
-/* Upload area */
 
 .addUploadWindow {
   display: flex;
@@ -590,7 +578,7 @@ footer {
 }
 
 
-/* Image preview */
+
 
 .previewBox {
   width: 100%;
@@ -610,7 +598,7 @@ footer {
 }
 
 
-/* Upload button */
+
 
 .upload-btn {
   position: relative;
@@ -650,8 +638,25 @@ footer {
   margin: 8px 0 0;
 }
 
+.addModalBtns{
+  display: flex;
+  justify-content: space-between;
+}
+ .back {
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 0;
+}
 
-/* Form */
+ .add-close {
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 0;
+}
 
 .addModal-content form {
   display: flex;
@@ -675,8 +680,6 @@ footer {
 }
 
 
-/* Separator */
-
 .addModal-line {
   width: 100%;
 
@@ -688,7 +691,7 @@ footer {
 }
 
 
-/* Validate button */
+
 
 .addWindowBtn {
   width: 50%;

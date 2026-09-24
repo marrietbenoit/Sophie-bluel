@@ -1,16 +1,33 @@
 const editBtn = document.getElementById("myBtn");
+ const modal = document.getElementById("modal-container"); 
+ const addModal = document.getElementById("addModal");
 
-const closeBtn = document.getElementById("close");
-const modal = document.getElementById("modal-container");
 
+ modal.addEventListener("command", function (event) {
 
+    if (event.command === "--open-add-modal") {
+        modal.close();
+        addModal.showModal();
+        event.stopPropagation();
+
+    }
+
+});
+document.addEventListener("command", function (event) {
+
+    if (event.command === "--back-to-gallery") {
+
+        addModal.close();
+        modal.showModal();
+
+        generateModalWorks(allworks);
+
+    }
+
+});
 // To open modal when Modifier is clicked and view all existing works
-editBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-
-    modal.showModal();
-
-    generateModalWorks(allworks);
+editBtn.addEventListener("click", function () {
+generateModalWorks(allworks);
 });
 
 function generateModalWorks(works) { 
@@ -79,11 +96,6 @@ async function deleteWork(workId) {
     }
 }
 
-// Close modal
-closeBtn.addEventListener("click", function () {
-    modal.close();
-});
-
 
 // Close modal when clicking outside
 modal.addEventListener("click", function (event) {
@@ -91,37 +103,25 @@ modal.addEventListener("click", function (event) {
         modal.close();
     }
 });
-
-
-// Now to add photos from library ect...
-const addPhotoBtn = document.getElementById("modal-btn");
-const addModal = document.getElementById("addModal");
-
-addPhotoBtn.addEventListener("click", function () {
-    modal.close();
-    addModal.showModal();
-});
-
-
-// Close add modal
-const addCloseBtn = document.querySelector(".add-close");
-
-addCloseBtn.addEventListener("click", function () {
-    addModal.close();
-});
-
-addModal.addEventListener("click", function (event){
-    if (event.target === addModal) {
+//To go back when arrow and x is clicked
+document.addEventListener("command", function (event) { 
+    if (event.command === "--back-to-gallery") { 
         addModal.close();
-    }
-});
-// Back to the first modal
-const backBtn = document.querySelector(".back");
+         modal.showModal(); 
+         generateModalWorks(allworks);
+         } 
+        });
 
-backBtn.addEventListener("click", function () {
-    addModal.close();
-    modal.showModal();
-});
+        addModal.addEventListener("command", function (event) {
+            
+    if (event.command === "--back-to-gallery") {
+
+        addModal.close();
+        modal.showModal();
+        generateModalWorks(allworks);
+
+    }
+            });
 
 
 // to add chosen image to preview box
